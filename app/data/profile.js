@@ -155,7 +155,7 @@ export const marketingWork = [
   ["Al Noor Specialised Hospital", "Healthcare", "Grand-opening invitation, envelope and social posts."]
 ];
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://omithassanakash.com"; // TODO: set your real domain
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://omit-portfolio.vercel.app"; // change here when you buy a domain
 
 // PandaStation-25 client work. Images live in public/work/<slug>/01-04.webp
 export const designWork = [
