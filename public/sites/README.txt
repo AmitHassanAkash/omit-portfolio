@@ -1,0 +1,1 @@
+Drop website screenshots here, named by slug: livix.jpg, eurobangla.jpg, pandastation.jpg, hellouttara.jpg, maptechnology.jpg, corposhop.jpg, techdistri.jpg, projuktibd.jpg (jpg, png or webp, ~1600px wide).

@@ -1,0 +1,14 @@
+"use client";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+const studies=[
+ {title:"Livix Furniture Store",context:"livixfurniture.com / 2026",steps:[["Challenge","An Uttara furniture showroom needed more than a brochure site: customers had to browse, order and pay the way Bangladeshi buyers actually pay."],["My Role","Planned the store, built it with AI assistance (Next.js front end, Laravel API) and handled deployment on Hostinger. Claude and I split the coding roughly half and half; the product and business decisions were mine."],["Execution","Product categories, cart, wishlist and order tracking; bKash, Nagad, Rocket, card and bank payments; custom-furniture requests from a photo or sketch; free design-visit booking. When the first deployment had problems, I deleted it and redeployed from scratch."],["Evidence","The store is live at livixfurniture.com. The client approved showing it publicly."]]},
+ {title:"40+ Client Onboarding",context:"VortexUp Digital / 2024",steps:[["Challenge","Support growth across clients in multiple industries while keeping campaign work consistent."],["My Role","Client onboarding, 360° campaign execution, copy, landing-page content and brand storytelling."],["Execution","Worked across social, email and SEO while aligning content and messaging to each client's goals."],["Evidence","40+ clients onboarded across multiple industries in 2024."]]},
+ {title:"Chaldal Email Campaigns",context:"Chaldal.com / 2021–2022",steps:[["Challenge","Promote seasonal sales and discounts through content and email communication."],["My Role","Content creation for blog, social and email newsletters, plus targeted promotional email campaigns."],["Execution","Campaign messaging focused on tips, deals, customer value and seasonal offers."],["Evidence","Average email open rate of 25%, contributing to a 10% uplift in sales during campaign periods."]]}
+];
+export default function CaseStudyExplorer(){
+ const [caseIndex,setCaseIndex]=useState(0),[step,setStep]=useState(0),detail=useRef(null);
+ const study=studies[caseIndex], current=study.steps[step];
+ useEffect(()=>{gsap.fromTo(detail.current,{x:26,opacity:0,filter:"blur(7px)"},{x:0,opacity:1,filter:"blur(0)",duration:.5,ease:"power3.out"});},[caseIndex,step]);
+ return <div className="case-explorer"><div className="case-switch">{studies.map((s,i)=><button key={s.title} className={i===caseIndex?"active":""} onClick={()=>{setCaseIndex(i);setStep(0)}}>{s.title}</button>)}</div><div className="case-body"><div className="case-steps">{study.steps.map(([name],i)=><button key={name} className={i===step?"active":""} onClick={()=>setStep(i)}><span>0{i+1}</span>{name}</button>)}</div><div ref={detail} className="case-detail"><div className="label">{study.context}</div><h3>{current[0]}</h3><p>{current[1]}</p><div className="case-progress"><span style={{width:`${((step+1)/study.steps.length)*100}%`}}/></div></div></div></div>
+}

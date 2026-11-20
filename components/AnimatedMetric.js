@@ -1,0 +1,3 @@
+"use client";
+import { useEffect,useRef } from "react";import { gsap } from "gsap";import { ScrollTrigger } from "gsap/ScrollTrigger";
+export default function AnimatedMetric({value,suffix="",label}){const num=useRef(null);useEffect(()=>{gsap.registerPlugin(ScrollTrigger);const target=parseFloat(value),obj={v:0};const st=ScrollTrigger.create({trigger:num.current,start:"top 88%",once:true,onEnter:()=>gsap.to(obj,{v:target,duration:1.4,ease:"power3.out",onUpdate:()=>{num.current.textContent=Math.round(obj.v)+suffix;}})});return()=>st.kill();},[value,suffix]);return <div className="impact-metric"><strong ref={num}>0{suffix}</strong><span>{label}</span></div>}

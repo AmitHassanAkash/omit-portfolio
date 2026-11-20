@@ -1,0 +1,5 @@
+"use client";
+import {useEffect,useState} from "react";import{gsap}from"gsap";
+export default function SoundIntro(){const[v,setV]=useState(true);useEffect(()=>{gsap.fromTo(".sound-intro-inner",{y:30,opacity:0},{y:0,opacity:1,duration:.7})},[]);
+const close=(sound)=>{window.__gateClosed=true;window.__gateSound=!!sound;window.dispatchEvent(new CustomEvent("gate:closed",{detail:{sound:!!sound}}));gsap.to(".sound-intro",{opacity:0,duration:.4,onComplete:()=>setV(false)})};if(!v)return null;
+return <div className="sound-intro"><div className="sound-intro-inner"><div className="label">Portfolio Experience</div><h2>Enter the site<br/><em>your way.</em></h2><p>Optional cinematic interface sound.</p><div className="sound-intro-actions"><button onClick={()=>{document.querySelector(".sound-toggle")?.click();setTimeout(()=>close(true),120)}}>Enter with sound</button><button className="ghost" onClick={()=>close(false)}>Enter without sound</button></div></div></div>}
